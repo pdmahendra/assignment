@@ -1,6 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import EventCard from "../components/EventCard";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const RealTimeEventsPage = () => {
+  
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: false, 
+      offset: 200, 
+    });
+    AOS.refresh(); 
+  }, []);
+
   const events = [
     {
       img: "./eventImg1.jpg",
@@ -83,71 +97,88 @@ const RealTimeEventsPage = () => {
         "A weekend of yoga, meditation, and wellness workshops on Malta’s beautiful beaches.",
     },
   ];
-  return (
+
+ return (
     <div className="max-w-[90%] mx-auto font-outfit">
       <div
         className="relative bg-cover bg-center w-full h-[400px] rounded-lg"
         style={{ backgroundImage: "url(Hero.jpg)" }}
+        data-aos="fade-down"
       >
         <div className="absolute inset-0 flex justify-center items-center text-4xl text-white font-bold">
-          {" "}
           Real-Time Events
         </div>
       </div>
 
       <div className="mt-24">
-        <div className="lg:flex justify-between">
-          <h1 className="text-[#202020] text-4xl font-bold max-md:text-center">
+        <div
+          className="lg:flex justify-between"   
+        >
+          <h1 className="text-[#202020] text-4xl font-bold max-md:text-center"
+          >
             Today’s Events
           </h1>
-          <img src="./component.png" alt="image" className="max-lg:hidden"/>
+          <img src="./component.png" alt="image" className="max-lg:hidden"
+          />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-16 mt-12">
-          {events?.map((event, index) => (
-            <EventCard
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-16 mt-12"
+        >
+          {events.map((event, index) => (
+            <div
               key={index}
-              img={event.img}
-              location={event.location}
-              time={event.time}
-              date={event.date}
-              eventTitle={event.eventTitle}
-              description={event.description}
-            />
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              <EventCard
+                img={event.img}
+                location={event.location}
+                time={event.time}
+                date={event.date}
+                eventTitle={event.eventTitle}
+                description={event.description}
+              />
+            </div>
           ))}
         </div>
       </div>
 
       <div className="mt-24">
-        <h1 className="text-[#202020] text-4xl font-bold text-center">
+        <h1 className="text-[#202020] text-4xl font-bold text-center" data-aos="fade-up">
           Upcoming Events
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-md:place-items-center gap-16 mt-12">
-          {" "}
-          {upcomingEvents?.map((event, index) => (
-            <EventCard
+          {upcomingEvents.map((event, index) => (
+            <div
               key={index}
-              img={event.img}
-              location={event.location}
-              time={event.time}
-              date={event.date}
-              eventTitle={event.eventTitle}
-              description={event.description}
-            />
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              <EventCard
+                img={event.img}
+                location={event.location}
+                time={event.time}
+                date={event.date}
+                eventTitle={event.eventTitle}
+                description={event.description}
+              />
+            </div>
           ))}
         </div>
       </div>
 
       <div className="mt-24">
-        <h1 className="text-[#202020] text-4xl font-bold text-center">
+        <h1 className="text-[#202020] text-4xl font-bold text-center" data-aos="fade-up">
           Event locations and nearby services
         </h1>
 
         <div className="mt-12 max-w-[100%] mx-auto border rounded-xl p-4 md:p-6 bg-[#D9D9D9]">
           <div
-            className=" relative bg-cover bg-center h-[400px] md:h-[530px] rounded-lg"
+            className="relative bg-cover bg-center h-[400px] md:h-[530px] rounded-lg"
             style={{ backgroundImage: "url(map.jpg)" }}
+            data-aos="zoom-in"
           ></div>
         </div>
       </div>
