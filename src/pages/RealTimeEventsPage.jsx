@@ -96,9 +96,12 @@ const RealTimeEventsPage = () => {
       </div>
 
       <div className="mt-24">
-        <h1 className="text-[#202020] text-4xl font-bold max-md:text-center">
-          Today’s Events
-        </h1>
+        <div className="flex justify-between">
+          <h1 className="text-[#202020] text-4xl font-bold max-md:text-center">
+            Today’s Events
+          </h1>
+          <img src="./component.png" alt="image" />
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-md:place-items-center gap-16 mt-12">
           {events?.map((event, index) => (
