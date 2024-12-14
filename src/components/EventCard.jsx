@@ -2,7 +2,7 @@ import React from "react";
 
 const EventCard = ({ img, location, time, date, eventTitle, description }) => {
   return (
-    <div className="border border-[#D9D9D9] p-8 bg-[#F9F9F9] rounded-2xl max-w-[420px]">
+    <div className="border border-[#D9D9D9] p-5 bg-[#F9F9F9] rounded-2xl max-w-[400px]">
       <img src={img} alt="Event Image" />
       <div className="font-outfit space-y-2 mt-3">
         <div className="flex items-center text-[#4E4E4E] gap-x-2">
